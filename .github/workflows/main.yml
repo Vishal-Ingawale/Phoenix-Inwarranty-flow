@@ -15,11 +15,11 @@ jobs:
 
       steps:
         - name: checkout the code
-        - uses: actions/checkout@v6.0.2
+          uses: actions/checkout@v6.0.2
 
         - name: Install Nodejs and npm
-        - uses: actions/setup-node@v6.3.0
-        - with:
+          uses: actions/setup-node@v6.3.0
+          with:
             node-version: '22'
 
         - name: Install Newman and Html-extra globally
