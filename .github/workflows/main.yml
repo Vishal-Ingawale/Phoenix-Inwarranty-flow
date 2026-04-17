@@ -6,8 +6,8 @@ on:
   workflow_dispatch: 
   schedule:
     - cron: 30 02 * * * # 8 am IST
-    - cron: 00 14 * * * #7:30 pm IST
-    - cron: 00 06 * * 1-5 #11:30 am IST
+    #- cron: 00 14 * * * #7:30 pm IST
+    #- cron: 00 06 * * 1-5 #11:30 am IST
 
 jobs:
     run-postman-tests:
@@ -40,6 +40,13 @@ jobs:
           with:
             name: Newman Report
             path: newman/*.html
+
+        - name: Creating GitHub page branch
+          if: always()
+          uses: peaceiris/actions-gh-pages@v4.0.0
+          with:
+            github_token: {{ secrets.GITHUB_TOKEN }}
+            publish_dir: newman/
                
 
 
